@@ -1,0 +1,110 @@
+@font-face {
+    font-family: 'Meow';
+    src: url('./meows-font/Meows-VGWjy.ttf') format('truetype');
+}
+
+/* Reset some default browser styles */
+body, h1, h2, p, img {
+    margin: 0;
+    padding: 0;
+}
+
+body, h1, h2, p, li, label, input {
+    color: #E75480;
+    font-family: 'Meow', sans-serif;
+}
+
+/* Basic styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #FFD1DC;
+}
+
+header {
+    background-color: #FDB9C8;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    margin-right: 20px; /* Add spacing between logo and title */
+}
+
+.logo img {
+    width: 50px; /* Adjust width of the logo */
+    height: auto; /* Automatically adjust height to maintain aspect ratio */
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav li {
+    display: inline; /* Display list items inline */
+    margin-right: 10px; /* Add spacing between list items */
+}
+
+nav a{
+    transition: background-color 0.3s ease;
+}
+
+nav a:hover{
+    background-color:#FFD1DC;
+    padding: 5px;
+    border-radius: 10%;
+}
+
+nav a:visited {
+    color:#E75480;
+}
+
+.me {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #FFE5E5;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form ol {
+    list-style-type: none;
+    padding: 0;
+}
+
+form li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; /* Add spacing between list items */
+}
+
+form li label {
+    width: 200px; /* Set a fixed width for the label */
+}
+
+form li input[type="text"] {
+    flex: 1;
+    width: 100%; /* Take up remaining space */
+    margin-left: 100px; /* Add spacing between label and input */
+    background-color: #E75480;
+}
+
+.results {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #FFE5E5;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}

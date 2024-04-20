@@ -1,0 +1,212 @@
+@font-face {
+    font-family: 'meowFont';
+    src:url(meows-font/Meows-VGWjy.ttf);
+}
+
+h1, p, input, select, option, label {
+    font-family: 'meowFont', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: url(https://media.discordapp.net/attachments/1230278551010545744/1230299662603255808/Untitled_Notebook_6-8.jpg?ex=6632d0d9&is=66205bd9&hm=bf0369c381ad274bb0729c68a3dbd844679fb5701df6f1b27126057f13e627b6&=&format=webp&width=2338&height=1462) no-repeat;
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    min-height: 100vh;
+}
+
+.logo {
+    height: 80px; 
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 1000; 
+}
+
+.logo-link {
+    text-decoration: none;
+    z-index: 1000;
+}
+
+header h1 {
+    font-size: 90px;
+}
+
+.wrapper {
+    position: relative;
+    color: #E75480;
+    border-radius: 10px;
+    
+    width: 460px;
+    margin: auto;
+    padding: 40px 50px;
+
+    background: #F6F5F2;
+    border: 2px solid rgba(255, 255, 255, .2);
+    -webkit-backdrop-filter: blur(21px); /* need to add for safari to work */
+    backdrop-filter: blur(21px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+}
+
+.wrapper .close-icon {
+    position: absolute;
+    top: 15px; 
+    right: 15px; 
+    height: 30px;
+    width: 30px;
+    background-size: contain;
+}
+
+.wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background-color: #FFE1E1;
+    border-radius: 10px 10px 0 0;
+}
+
+.wrapper h1 {
+    position: relative;
+    z-index: 1; 
+    font-size: 36px;
+    text-align: center;
+}
+
+.wrapper .login-box {
+    width:  100%;
+    height: 50px;
+    margin: 30px 0;
+}
+
+.login-box input {
+    width: 100%;
+    height: 100%;
+
+    font-size: 20px;
+    color: #E75480;
+    
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(243, 208, 215, .7);
+    border-radius: 40px;
+    padding: 20px 45px 20px 20px;
+}
+
+.login-box input::placeholder {
+    color: #E75480;
+}
+
+.login-box label[for=major] {
+    font-size: 20px;
+    color: #E75480;
+}
+
+.login-box #major {
+    font-size: 20px;
+    color: #E75480;
+}
+
+.login-box select {
+    width: 85%;
+    border: 1px solid #E75480;
+    color: #333;
+    font-size: 20px;
+    background-color: transparent;
+    border-radius: 30px;
+}
+
+.wrapper .button {
+    width: 100%;
+    height: 45px;
+    
+    background: #FFE5E5;
+    border: none;
+    outline: none;
+    border-radius: 50px;
+    box-shadow: 0 0 10px rgba(0,0,0,-1);
+    cursor: pointer;
+
+    color: #E75480;
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.wrapper .button:hover {
+    background-color: #e6a4b4;
+    color: #fff; 
+}
+
+.wrapper .register {
+    margin: 20px 0 15px;
+
+    font-size: 18px;
+    text-align: center;
+}
+
+.major-select-group {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: 100%;
+}
+
+.major-select-group label {
+    margin-right: 10px;
+}
+
+.major-select-group select {
+    flex-grow: 1;
+    border: 2px solid rgba(243, 208, 215, .7);
+    border-radius: 40px;
+    padding: 12px 20px;
+}
+
+.register p a {
+    color: #fb4570;
+    font-weight: 1000;
+}
+
+.register p a:hover {
+    text-decoration: underline;
+}
+
+.title {
+    font-size: 4vw;
+    text-align: center;
+    position: absolute;
+    top: 100px;
+    color: #E75480;
+}
+
+header .animation {
+    --animate-duration: 800ms;
+    --animate-delay: 0.9s;
+}
+
+.footer {
+    width: 100%;
+    background-color: #E75480;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.2);
+    z-index: 100;
+}

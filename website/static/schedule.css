@@ -9,6 +9,12 @@ body, h1, h2, p, img {
     padding: 0;
 }
 
+a {
+    text-decoration: none;
+    color: #E75480;
+    font-size: 20px;
+}
+
 body, h1, h2, p, li, label, input {
     color: #E75480;
     font-family: 'Meow', sans-serif;

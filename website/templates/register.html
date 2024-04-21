@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link href="/static/register.css" rel="stylesheet" type="text/css" />
+    <!-- animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+</head>
+<body>
+    <a href="index" class="logo-link">
+        <img src="https://media.discordapp.net/attachments/1194441517826322503/1230266606534397972/file-AADxbJARYTVlu6z98DEhdTly-removebg-preview.png?ex=6632b210&is=66203d10&hm=6c08f2b2a2dba931ba81d823c0ec6a181e9c0d2dfd10985526abdeb8ed92a895&=&format=webp&quality=lossless&width=1000&height=1000" alt="Purrfect Path Logo" class="logo"/>
+    </a>
+    <header class="title animate__animated animate__fadeInDown animate__delay-.5s animate__slow">
+        <h1>Register</h1>
+    </header>
+    <div class="wrapper">
+        <img src="https://cdn.discordapp.com/attachments/1230278551010545744/1231310811859783720/transparent_x.png?ex=66367e8e&is=6624098e&hm=ba50f6bb6bceb1193eb037a3cb175cfb93994394f00247c61dad4d0ff383814f&" class="close-icon">
+        <form id = "CreateUser" method = "POST">
+            <h1>Create Account</h1>
+            <div class="login-box">
+                <input type="username" placeholder="Username" name = "username" required>
+            </div>
+            <div class="login-box">
+                <input type="email" placeholder="Email Address" name = "email" required>
+            </div>
+            <div class="login-box">
+                <input type="password" placeholder="Password" name = "password" required>
+            </div>
+            <div class="login-box">
+                <input type="password" placeholder="Confirm Password" name = "confirmPassword" required>
+            </div>
+            <div class="login-box">
+                <div class="major-select-group">
+                    <label for="major">Major:</label>
+                    <select name="major" id="major">
+                        <option value="Computer Science">Computer Science</option>
+                        <option value="Computer Engineering">Computer Engineering</option>
+                        <option value="Cybersecurity">Cybersecurity</option>
+                        <option value="Information Technology">Information Technology</option>
+                    </select>
+                </div>
+            </div>
+            <button type="submit" class="button">Create</button>
+        </form>
+    </div>
+    <footer class="footer">
+        <p>&copy; Mewmentum 2024</p>
+    </footer>
+</body>
+</html>

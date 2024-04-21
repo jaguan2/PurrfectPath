@@ -29,7 +29,7 @@ class Courses(db.Model, UserMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     subject = db.Column(db.String(3))
-    courseno = db.Column(db.Integer)
+    courseno = db.Column(db.String(100))
     title = db.Column(db.String(100))
     credits = db.Column(db.Integer) 
     instrumeth = db.Column(db.String(100))

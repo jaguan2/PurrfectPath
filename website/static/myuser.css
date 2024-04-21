@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'Meow';
-    src: url('./meows-font/Meows-VGWjy.ttf') format('truetype');
+    src: url('meows-font/Meows-VGWjy.ttf') format('truetype');
 }
 
 /* Reset some default browser styles */

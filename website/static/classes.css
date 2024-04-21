@@ -1,0 +1,140 @@
+@font-face {
+    font-family: 'Meow';
+    src: url('./meows-font/Meows-VGWjy.ttf') format('truetype');
+}
+
+/* Reset some default browser styles */
+body, h1, h2, p, img {
+    margin: 0;
+    padding: 0;
+}
+
+body, h1, h2, p, li {
+    color: #E75480;
+    font-family: 'Meow', sans-serif;
+}
+
+/* Basic styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #FFD1DC;
+}
+
+header {
+    background-color: #FDB9C8;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    margin-right: 20px; /* Add spacing between logo and title */
+}
+
+.logo img {
+    width: 50px; /* Adjust width of the logo */
+    height: auto; /* Automatically adjust height to maintain aspect ratio */
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav li {
+    display: inline; /* Display list items inline */
+    margin-right: 10px; /* Add spacing between list items */
+}
+
+nav a{
+    transition: background-color 0.3s ease;
+}
+
+nav a:hover{
+    background-color:#FFD1DC;
+    padding: 5px;
+    border-radius: 10%;
+}
+
+nav a:visited {
+    color:#E75480;
+}
+
+.me {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #FFE5E5;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.user-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center; /* Align items vertically */
+}
+
+.avatar {
+    margin-right: 10px; /* Add space between avatar and details */
+}
+
+.avatar img {
+    width: 100%; /* Adjust width of the avatar */
+    max-width: 75px;
+    height: 75px; /* Adjust height of the avatar */
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.name {
+    flex: 3;
+    padding: 0 20px;
+}
+
+.classes {
+    margin-top: 20px;
+}
+
+.search {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #FFE5E5;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.button {
+    width: 100%;
+    height: 45px;
+    
+    background: #FFE5E5;
+    border: none;
+    outline: none;
+    box-shadow: 0 0 10px rgba(0,0,0,-1);
+    cursor: pointer;
+    
+
+    color: #E75480;
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.button:hover {
+    background-color: #e6a4b4;
+    color: #fff; 
+}
+
+.table_button {
+    border: none;
+}

@@ -1,0 +1,10 @@
+setup.py
+MyFlaskApp.egg-info/PKG-INFO
+MyFlaskApp.egg-info/SOURCES.txt
+MyFlaskApp.egg-info/dependency_links.txt
+MyFlaskApp.egg-info/requires.txt
+MyFlaskApp.egg-info/top_level.txt
+website/__init__.py
+website/auth.py
+website/models.py
+website/views.py

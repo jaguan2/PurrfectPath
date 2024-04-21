@@ -12,7 +12,6 @@ def login():
     uname = request.form.get('username')
     password = request.form.get('password')
 
-    print(uname)
     student = Student.query.filter_by(username=uname).first()
     s = Student.query.all()
     sdata = []

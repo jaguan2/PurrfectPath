@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'meowFont';
-    src:url(meows-font/Meows-VGWjy.ttf);
+    src:url('meows-font/Meows-VGWjy.ttf');
 }
 
 h1, p, input {

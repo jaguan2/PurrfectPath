@@ -25,7 +25,7 @@ class Faculty(db.Model, UserMixin):
     lname = db.Column(db.String(100))
     department = db.Column(db.String(100))
 
-class Courses(db.Model, UserMixin):
+class Course(db.Model, UserMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     subject = db.Column(db.String(3))
@@ -36,8 +36,8 @@ class Courses(db.Model, UserMixin):
     day = db.Column(db.String(10)) 
     time = db.Column(db.String(100))
     location = db.Column(db.String(100)) 
-    instructor = db.Column(db.Integer, db.ForeignKey('Faculty.id'))
+    instructor = db.Column(db.Integer, db.ForeignKey('faculty.id'))
 
 class Taken(db.Model, UserMixin):
-    student = db.Column(db.Integer, db.ForeignKey('Student.id'), primary_key=True)
-    course = db.Column(db.Integer, db.ForeignKey('Courses.id'), primary_key=True)
+    student = db.Column(db.Integer, db.ForeignKey('student.id'), primary_key=True)
+    course = db.Column(db.Integer, db.ForeignKey('course.id'), primary_key=True)

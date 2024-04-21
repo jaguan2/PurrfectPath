@@ -41,9 +41,9 @@
         <section class="classes">
             <h2>Schedule</h2>
             <ul>
-                <li>Class 1</li>
-                <li>Class 2</li>
-                <li>Class 3</li>
+                {% for course in taken %}
+                    <li>{{ course.title }}</li>
+                {% endfor %}
             </ul>
         </section>
     </div>

@@ -68,3 +68,15 @@ def register():
       return redirect(url_for('views.myuser'))
 
   return render_template("register.html")
+
+@auth.route('/ret')
+def ret():
+  return render_template("index.html")
+
+@auth.route('/home')
+def home():
+  return redirect(url_for('views.myuser'))
+
+@auth.route('/search')
+def search():
+  return render_template("schedule.html")

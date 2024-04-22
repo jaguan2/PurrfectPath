@@ -39,7 +39,7 @@
     <div class = "search">
         <h2 class="lookup_title"> Users Found: </h2>
         {% for user in users %}
-            <div class="lookup"><input type="checkbox">{{ user.username }}</div>
+            <div class="lookup"><input type="checkbox" name="selected_class">{{ user.username }}</div>
         {% endfor %}
     </div>
 </body>

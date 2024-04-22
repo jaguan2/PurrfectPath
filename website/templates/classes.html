@@ -58,7 +58,7 @@
             </tr>
             {% for course in courses %}
             <tr>
-                <td><input type="checkbox" class="check_button"></td>
+                <td><input type="checkbox" name="selected_class" class="check_button"></td>
                 <td>{{ course.id }}</td>
                 <td>{{ course.subject }}</td>
                 <td>{{ course.courseno }}</td>

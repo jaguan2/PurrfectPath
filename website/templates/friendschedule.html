@@ -49,16 +49,6 @@
         </section>
     </div>
 
-    <div class = "friends">
-        <h2> My Friends </h2>
-        <ul>
-            {% for friend in friends %}
-            <li>{{ friend.username }} <a href="{{ url_for('views.friendschedule', friendid=friend.id) }}" class = "checkschedule">(Check Their Schedule!)</a> </li>
-            {% endfor %}
-        </ul>
-    </div>
-
-
 </body>
 </html>
 {% endblock %}

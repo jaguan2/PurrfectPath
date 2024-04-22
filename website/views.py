@@ -18,13 +18,26 @@ def myuser():
             .all()
     )
     friends = (
-        db.session.query(Student.username)
+        db.session.query(Student)
             .join(Friend, Student.id == Friend.followee)
             .filter(Friend.follower == myid)
             .all()
     )
 
     return render_template('myuser.html', username=current_user.username, taken=taken, friends=friends)
+
+@views.route('/friendschedule', methods=['GET'])
+@login_required
+def friendschedule():
+    friendid = request.args.get('friendid')
+    friendinfo = Student.query.get(friendid)
+    taken = (
+        db.session.query(Course.title)
+            .join(Taken, Taken.course == Course.id)
+            .filter(Taken.student == friendid)
+            .all()
+    )
+    return render_template('friendschedule.html', username=friendinfo.username, taken=taken)
 
 @views.route('/classresults', methods=['GET', 'POST'])
 @login_required

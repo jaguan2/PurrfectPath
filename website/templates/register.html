@@ -13,13 +13,11 @@
     <a href="/ret" class="logo-link">
         <img src="https://media.discordapp.net/attachments/1194441517826322503/1230266606534397972/file-AADxbJARYTVlu6z98DEhdTly-removebg-preview.png?ex=6632b210&is=66203d10&hm=6c08f2b2a2dba931ba81d823c0ec6a181e9c0d2dfd10985526abdeb8ed92a895&=&format=webp&quality=lossless&width=1000&height=1000" alt="Purrfect Path Logo" class="logo"/>
     </a>
-    <!-- <header class="title animate__animated animate__fadeInDown animate__delay-.5s animate__slow">
-        <h1>Register</h1>
-    </header> -->
     <div class="wrapper">
-        <img src="https://cdn.discordapp.com/attachments/1230278551010545744/1231310811859783720/transparent_x.png?ex=66367e8e&is=6624098e&hm=ba50f6bb6bceb1193eb037a3cb175cfb93994394f00247c61dad4d0ff383814f&" class="close-icon">
         <form id = "CreateUser" method = "POST">
-            <h1>Create Account</h1>
+            <div class="h1-div">
+                <h1>Create Account</h1>
+            </div>
             <div class="login-box">
                 <input type="username" placeholder="Username" name = "username" required>
             </div>
@@ -53,7 +51,7 @@
         <p>&copy; Mewmentum 2024</p>
     </footer>
     <script>
-        /* password requirements
+        /*  password requirements
         * - have at least 8 characters
         * - have at least 1 uppercase character
         * - have at least 1 number
@@ -75,10 +73,10 @@
                 alert("Password must contain at least one number.");
                 return false;
             }
-            // if (password !== confpass)
-            //     console.log("Passwords do not match.");
-            //     alert("Passwords do not match.");
-            //     return false;             
+            if (password !== confpass)
+                console.log("Passwords do not match.");
+                alert("Passwords do not match.");
+                return false;             
             return true; // All validations passed
         }
 

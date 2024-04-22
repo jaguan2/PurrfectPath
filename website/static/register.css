@@ -193,11 +193,6 @@ header h1 {
     color: #E75480;
 }
 
-header .animation {
-    --animate-duration: 800ms;
-    --animate-delay: 0.9s;
-}
-
 .footer {
     width: 100%;
     background-color: #E75480;

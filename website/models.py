@@ -41,3 +41,7 @@ class Course(db.Model, UserMixin):
 class Taken(db.Model, UserMixin):
     student = db.Column(db.Integer, db.ForeignKey('student.id'), primary_key=True)
     course = db.Column(db.Integer, db.ForeignKey('course.id'), primary_key=True)
+
+class Friend(db.Model, UserMixin):
+    follower = db.Column(db.Integer, db.ForeignKey('student.id'), primary_key=True)
+    followee = db.Column(db.Integer, db.ForeignKey('student.id'), primary_key=True)

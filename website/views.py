@@ -55,28 +55,3 @@ def classresults():
 def friend():
     users = Student.query.all()
     return render_template('friend.html', users = users)
-
-@views.route('/classresultsubmit')
-def classresultsubmit():
-    return render_template('myuser.html')
-
-
-'''
-@views.route('/process_classes', methods=['POST'])
-@login_required
-def process_classes():
-    if request.method == 'POST':
-        # Get the list of selected class IDs from the form data
-        selected_class_ids = request.form.getlist('selected_class')
-        
-        # Iterate through the selected class IDs and create entries in the 'taken' table
-        for class_id in selected_class_ids:
-            taken_entry = Taken(student=current_user.id, class_id=class_id)
-            db.session.add(taken_entry)
-        
-        # Commit the changes to the database
-        db.session.commit()
-        
-        # Redirect to a success page or back to the class selection page
-        return render_template('myuser.html')
-    '''

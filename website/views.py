@@ -23,10 +23,10 @@ def myuser():
 @views.route('/classresults', methods=['GET', 'POST'])
 @login_required
 def classresults():
-    subject = request.args.get('subject')
+    subject = request.args.get('subject').upper()
     courseno = request.args.get('courseno')
-    title = request.args.get('title')
-    day = request.args.get('day')
+    title = request.args.get('title').title()
+    day = request.args.get('day').upper()
 
     # Initialize the base query to select all courses
     query = Course.query

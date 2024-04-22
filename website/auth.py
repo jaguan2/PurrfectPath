@@ -33,9 +33,9 @@ def login():
 def logout():
   logout_user()
   return redirect(url_for('auth.login'))
+
 @auth.route('/register', methods=['GET', 'POST'])
 def register():
-  '''
   if request.method == 'POST':
 
     username = request.form.get('username')
@@ -43,6 +43,7 @@ def register():
     password = request.form.get('password')
     confirmPassword = request.form.get('confirmPassword')
     major = request.form.get('major')
+    adminid = request.form.get('adminid')
 
 
     student = Student.query.filter_by(username=username).first()
@@ -50,9 +51,20 @@ def register():
       flash('Account name already exists.', category='error')
     elif password != confirmPassword:
       flash("Passwords don't match.", category='error')
+    elif adminid == 123:
+      # Store the password directly without hashing
+      new_student = Student(username=username, email=email, password=password, major=major, admin=True)
+      db.session.add(new_student)
+      db.session.commit()
+      login_user(new_student, remember=True)
+      flash('Account created!', category='success')
+
+      db.session.commit()
+
+      return redirect(url_for('views.myuser'))       
     else:
       # Store the password directly without hashing
-      new_student = Student(username=username, email=email, password=password, major=major)
+      new_student = Student(username=username, email=email, password=password, major=major, admin=False)
       db.session.add(new_student)
       db.session.commit()
       login_user(new_student, remember=True)
@@ -61,7 +73,6 @@ def register():
       db.session.commit()
 
       return redirect(url_for('views.myuser'))
-  '''
   return render_template("register.html")
 
 @auth.route('/ret')

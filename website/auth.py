@@ -14,12 +14,8 @@ def login():
 
     student = Student.query.filter_by(username=uname).first()
     s = Student.query.all()
-    sdata = []
-    for a in s:
-      print(f"Username: {a.username}")
     if student:
       # Directly compare the password without hashing
-      print(student.password, password)
       if student.password == password:
         flash('Logged in successfully!', category='success')
         login_user(student, remember=True)
@@ -79,5 +75,10 @@ def home():
 @auth.route('/search', methods=['GET', 'POST'])
 def search():
   if request.method == 'POST':
-    return render_template("classes.html")
+    subject = request.form.get('subject')
+    courseno = request.form.get('courseno')
+    title = request.form.get('title')
+    day = request.form.get('day')
+
+    return redirect(url_for('views.classresults', subject=subject, courseno=courseno, title=title, day=day))
   return render_template("schedule.html")

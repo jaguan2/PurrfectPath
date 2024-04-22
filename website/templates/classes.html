@@ -33,7 +33,7 @@
     table, th, td {
         border: 1px solid pink;
         text-align: center;
-      }
+    }
 
     </style>
 
@@ -52,28 +52,34 @@
                 <td>Time </td>
                 <td>Location </td>
                 <td>Instructor </td>
-              
+                {% if current_user.is_admin %}
+                <th>Faculty ID</th> <!--This column will only be visible to admins-->
+                {% endif %}
             </tr>
+            {% for course in courses %}
             <tr>
-                <td><input type="checkbox" class="check_button"></button></td>
-                <td>92569 </td>
-                <td>COP </td>
-                <td>4710 </td>
-                <td>Database Design </td>
-                <td>3 </td>
-                <td>Classroom </td>
-                <td>TuTr </td>
-                <td>5:00pm - 6:15pm </td>
-                <td>CHE 103 </td>
-                <td>56123365 </td>
+                <td><input type="checkbox" class="check_button"></td>
+                <td>{{ course.id }}</td>
+                <td>{{ course.subject }}</td>
+                <td>{{ course.courseno }}</td>
+                <td>{{ course.title }}</td>
+                <td>{{ course.credits }}</td>
+                <td>{{ course.instrumeth }}</td>
+                <td>{{ course.day }}</td>
+                <td>{{ course.time }}</td>
+                <td>{{ course.location }}</td>
+                <td>{{ course.instructor }}</td>
+                {% if current_user.is_admin %}
+                <!-- <th>Faculty ID</th> This cell will only be visible to admins-->
+                {% endif %}
             </tr>
+            {% endfor %}
         <tr>
             <td colspan="11" class="table_button">
                 <button class = "button" type="submit" style="float: right;">Submit</button>
             </td>
         </tr>
         </table>
-          
     </div>
 
 </body>

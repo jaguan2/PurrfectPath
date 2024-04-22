@@ -1,4 +1,4 @@
-from flask import render_template, Blueprint
+from flask import render_template, Blueprint, request
 from flask_login import login_required, current_user
 from .models import Taken, Course
 from . import db
@@ -19,3 +19,30 @@ def myuser():
     )
 
     return render_template('myuser.html', username=current_user.username, taken=taken)
+
+@views.route('/classresults', methods=['GET', 'POST'])
+@login_required
+def classresults():
+    subject = request.args.get('subject')
+    courseno = request.args.get('courseno')
+    title = request.args.get('title')
+    day = request.args.get('day')
+
+    # Initialize the base query to select all courses
+    query = Course.query
+
+    # Filter the query based on the provided search parameters
+    if subject:
+        query = query.filter(Course.subject == subject)
+    if courseno:
+        query = query.filter(Course.courseno == courseno)
+    if title:
+        query = query.filter(Course.title == title)
+    if day:
+        query = query.filter(Course.day == day)
+
+    # Execute the filtered query
+    courses = query.all()
+
+    #courses = Course.query.filter(Course.subject==subject).all()
+    return render_template('classes.html', courses = courses)

@@ -52,9 +52,9 @@
     <div class = "friends">
         <h2> My Friends </h2>
         <ul>
-            <li>Grace Nguyen</li>
-            <li>Yuka Yamamoto</li>
-            <li>I guess Jason</li>
+            {% for friend in friends %}
+                    <li>{{ friend.username }}</li> <a href="myuser">(Check Their Schedule!)</a>
+            {% endfor %}
         </ul>
     </div>
 

@@ -1,6 +1,6 @@
 from flask import render_template, Blueprint, request, redirect, url_for
 from flask_login import login_required, current_user
-from .models import Taken, Course, Student
+from .models import Taken, Course, Student, Friend
 from . import db
 
 views = Blueprint('views', __name__)
@@ -17,8 +17,14 @@ def myuser():
             .filter(Taken.student == myid)
             .all()
     )
+    friends = (
+        db.session.query(Student.username)
+            .join(Friend, Student.id == Friend.followee)
+            .filter(Friend.follower == myid)
+            .all()
+    )
 
-    return render_template('myuser.html', username=current_user.username, taken=taken)
+    return render_template('myuser.html', username=current_user.username, taken=taken, friends=friends)
 
 @views.route('/classresults', methods=['GET', 'POST'])
 @login_required
@@ -53,8 +59,25 @@ def classresults():
 @views.route('/friend', methods=['GET', 'POST'])
 @login_required
 def friend():
-    users = Student.query.all()
-    return render_template('friend.html', users = users)
+    if request.method == 'POST':
+        # Get the list of selected class IDs from the form data
+        selected_friends = request.form.getlist('selected_friend')
+        print(selected_friends)
+        
+        # Iterate through the selected class IDs and create entries in the 'taken' table
+        for follow in selected_friends:
+            print(follow)
+            follow_entry = Friend(follower=current_user.id, followee=follow)
+            db.session.add(follow_entry)
+        
+        # Commit the changes to the database
+        db.session.commit()
+        
+        return redirect(url_for('views.myuser'))
+    
+    if request.method == "GET":
+        users = Student.query.all()
+        return render_template('friend.html', users = users)
 
 @views.route('/classsubmit',  methods=['GET', 'POST'])
 def classsubmit():
@@ -69,6 +92,26 @@ def classsubmit():
             print(class_id)
             taken_entry = Taken(student=current_user.id, course=class_id)
             db.session.add(taken_entry)
+        
+        # Commit the changes to the database
+        db.session.commit()
+        
+        return redirect(url_for('views.myuser'))
+
+    return redirect(url_for('views.myuser'))
+
+@views.route('/friendsubmit', methods=['GET','POST'])
+def friendsubmit():
+    if request.method == 'POST':
+        # Get the list of selected class IDs from the form data
+        selected_friends = request.form.getlist('selected_friend')
+        print(selected_friends)
+        
+        # Iterate through the selected class IDs and create entries in the 'taken' table
+        for follow in selected_friends:
+            print(follow)
+            follow_entry = Friend(follower=current_user.id, followee=follow)
+            db.session.add(follow_entry)
         
         # Commit the changes to the database
         db.session.commit()

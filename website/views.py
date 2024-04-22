@@ -1,6 +1,6 @@
 from flask import render_template, Blueprint
 from flask_login import login_required, current_user
-from .models import Taken, Course
+from .models import Taken, Course, Student
 from . import db
 
 views = Blueprint('views', __name__)
@@ -19,3 +19,9 @@ def myuser():
     )
 
     return render_template('myuser.html', username=current_user.username, taken=taken)
+
+@views.route('/friend', methods=['GET', 'POST'])
+@login_required
+def friend():
+    users = Student.query.all()
+    return render_template('friend.html', users = users)

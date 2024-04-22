@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, flash, redirect, url_for
+from flask import Blueprint, render_template, request, redirect, url_for
 from .models import Student
 from . import db
 from flask_login import login_user, login_required, logout_user, current_user
@@ -17,13 +17,8 @@ def login():
     if student:
       # Directly compare the password without hashing
       if student.password == password:
-        flash('Logged in successfully!', category='success')
         login_user(student, remember=True)
         return redirect(url_for('views.myuser'))
-      else:
-        flash('Incorrect password, try again.', category='error')
-    else:
-      flash('Account name does not exist.', category='error')
 
   return render_template("index.html")
 
@@ -47,16 +42,15 @@ def register():
 
     student = Student.query.filter_by(username=username).first()
     if student:
-      flash('Account name already exists.', category='error')
+      print("error")
     elif password != confirmPassword:
-      flash("Passwords don't match.", category='error')
+      print("error")
     elif adminid == "123":
       # Store the password directly without hashing
       new_student = Student(username=username, email=email, password=password, major=major, isadmin=True)
       db.session.add(new_student)
       db.session.commit()
       login_user(new_student, remember=True)
-      flash('Account created!', category='success')
 
       db.session.commit()
 
@@ -67,7 +61,6 @@ def register():
       db.session.add(new_student)
       db.session.commit()
       login_user(new_student, remember=True)
-      flash('Account created!', category='success')
 
       db.session.commit()
 

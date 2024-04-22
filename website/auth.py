@@ -42,18 +42,17 @@ def register():
     email = request.form.get('email')
     password = request.form.get('password')
     confirmPassword = request.form.get('confirmPassword')
-    major = request.form.get('major')
     adminid = request.form.get('adminid')
-
+    major = request.form.get('major')
 
     student = Student.query.filter_by(username=username).first()
     if student:
       flash('Account name already exists.', category='error')
     elif password != confirmPassword:
       flash("Passwords don't match.", category='error')
-    elif adminid == 123:
+    elif adminid == "123":
       # Store the password directly without hashing
-      new_student = Student(username=username, email=email, password=password, major=major, admin=True)
+      new_student = Student(username=username, email=email, password=password, major=major, isadmin=True)
       db.session.add(new_student)
       db.session.commit()
       login_user(new_student, remember=True)
@@ -64,7 +63,7 @@ def register():
       return redirect(url_for('views.myuser'))       
     else:
       # Store the password directly without hashing
-      new_student = Student(username=username, email=email, password=password, major=major, admin=False)
+      new_student = Student(username=username, email=email, password=password, major=major, isadmin=False)
       db.session.add(new_student)
       db.session.commit()
       login_user(new_student, remember=True)

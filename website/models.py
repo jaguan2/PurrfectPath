@@ -4,19 +4,11 @@ from flask_login import UserMixin
 class Student(db.Model, UserMixin):
 
     id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String())
-    password = db.Column(db.String())
-    username = db.Column(db.String())
-    major = db.Column(db.String()) 
-
-# class Student(db.Model, UserMixin):
-
-#     id = db.Column(db.Integer, primary_key=True)
-#     email = db.Column(db.String(100))
-#     password = db.Column(db.String(100))
-#     username = db.Column(db.String(100))
-#     major = db.Column(db.String(100))
-#     advisor = db.Column(db.Integer, db.ForeignKey(Faculty.id))
+    email = db.Column(db.String(100))
+    password = db.Column(db.String(100))
+    username = db.Column(db.String(100))
+    major = db.Column(db.String(100))
+    isadmin = db.Column(db.Boolean)
 
 class Faculty(db.Model, UserMixin):
 

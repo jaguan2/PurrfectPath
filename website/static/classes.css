@@ -80,7 +80,7 @@ nav a:visited {
 }
 
 .search {
-    max-width: 800px;
+    max-width: 1100px;
     margin: 20px auto;
     padding: 20px;
     background-color: #FFE5E5;
@@ -88,9 +88,43 @@ nav a:visited {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+.search table {
+    width: 100%;
+}
+
+.search {
+    overflow-x: auto;
+}
+
+/* Hide the default checkbox */
+.check_button {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 30px;
+    height: 30px;
+    background-color: pink; /* Pink color */
+    border: 1px solid pink; /* Pink border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer;
+}
+
+/* Show a custom checkmark when the checkbox is checked */
+.check_button:checked {
+    background-color: pink; /* Pink color */
+    background-image: url('https://cdn.discordapp.com/attachments/1230278551010545744/1232059575797289092/checkmark-ezgif.com-webp-to-jpg-converter-removebg-preview-2.png?ex=66281465&is=6626c2e5&hm=3d8a28363eb9536a3ac8ee3db4f253eb0d2b4bdabae32f72bfa5a92618abba83&');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
 table, th, td {
     border: 1px solid pink;
+    width: 100%;
     text-align: center;
+}
+
+th, td {
+    width: auto;
 }
 
 .button {

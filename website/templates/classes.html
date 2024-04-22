@@ -33,40 +33,67 @@
         <div class = "search">
             <h2> Sections Found: </h2>
             <table>
-                <tr>
-                    <td>≽^•⩊•^≼</td>
-                    <td>CRN </td>
-                    <td>Subject </td>
-                    <td>CourseNo </td>
-                    <td>Title </td>
-                    <td>Credits </td>
-                    <td>Instructional Method </td>
-                    <td>Day </td>
-                    <td>Time </td>
-                    <td>Location </td>
-                    <td>Instructor </td>
-                    {% if current_user.is_admin %}
-                    <th>Faculty ID</th> <!--This column will only be visible to admins-->
-                    {% endif %}
-                </tr>
-                {% for course in courses %}
-                <tr>
-                    <td><input type="checkbox" name="selected_class" class="check_button" value="{{ course.id }}"></td>
-                    <td>{{ course.id }}</td>
-                    <td>{{ course.subject }}</td>
-                    <td>{{ course.courseno }}</td>
-                    <td>{{ course.title }}</td>
-                    <td>{{ course.credits }}</td>
-                    <td>{{ course.instrumeth }}</td>
-                    <td>{{ course.day }}</td>
-                    <td>{{ course.time }}</td>
-                    <td>{{ course.location }}</td>
-                    <td>{{ course.instructor }}</td>
-                    {% if current_user.is_admin %}
-                    <!-- <th>Faculty ID</th> This cell will only be visible to admins-->
-                    {% endif %}
-                </tr>
-                {% endfor %}
+                {% if isadmin %}
+                    <tr>
+                        <td>≽^•⩊•^≼</td>
+                        <td>CRN </td>
+                        <td>Subject </td>
+                        <td>CourseNo </td>
+                        <td>Title </td>
+                        <td>Credits </td>
+                        <td>Instructional Method </td>
+                        <td>Day </td>
+                        <td>Time </td>
+                        <td>Location </td>
+                        <td>Instructor </td>
+                        <th>Faculty ID</th>
+                    </tr>
+                    {% for course in courses %}
+                    <tr>
+                        <td><input type="checkbox" name="selected_class" class="check_button" value="{{ course.id }}"></td>
+                        <td>{{ course.id }}</td>
+                        <td>{{ course.subject }}</td>
+                        <td>{{ course.courseno }}</td>
+                        <td>{{ course.title }}</td>
+                        <td>{{ course.credits }}</td>
+                        <td>{{ course.instrumeth }}</td>
+                        <td>{{ course.day }}</td>
+                        <td>{{ course.time }}</td>
+                        <td>{{ course.location }}</td>
+                        <td>{{ course.fname }} <br> {{ course.lname }}</td>
+                        <td>{{ course.instructor }}</td>
+                    </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td>≽^•⩊•^≼</td>
+                        <td>CRN </td>
+                        <td>Subject </td>
+                        <td>CourseNo </td>
+                        <td>Title </td>
+                        <td>Credits </td>
+                        <td>Instructional Method </td>
+                        <td>Day </td>
+                        <td>Time </td>
+                        <td>Location </td>
+                        <td>Instructor </td>
+                    </tr>
+                    {% for course in courses %}
+                    <tr>
+                        <td><input type="checkbox" name="selected_class" class="check_button" value="{{ course.id }}"></td>
+                        <td>{{ course.id }}</td>
+                        <td>{{ course.subject }}</td>
+                        <td>{{ course.courseno }}</td>
+                        <td>{{ course.title }}</td>
+                        <td>{{ course.credits }}</td>
+                        <td>{{ course.instrumeth }}</td>
+                        <td>{{ course.day }}</td>
+                        <td>{{ course.time }}</td>
+                        <td>{{ course.location }}</td>
+                        <td>{{ course.fname }} <br> {{ course.lname }}</td>
+                    </tr>
+                    {% endfor %}
+                {% endif %}
             <tr>
                 <td colspan="11" class="table_button">
                     <button class = "button" type="submit" style="float: right;">Submit</button>

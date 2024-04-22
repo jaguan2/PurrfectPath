@@ -173,3 +173,9 @@ header .animation {
     box-shadow: 0 -2px 5px rgba(0,0,0,0.2);
     z-index: 100;
 }
+
+@media (max-width: 680px), (max-height: 800px) {
+    header h1 {
+        display: none;
+    }
+}

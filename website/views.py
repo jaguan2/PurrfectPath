@@ -1,7 +1,8 @@
 from flask import render_template, Blueprint, request, redirect, url_for, flash
 from flask_login import login_required, current_user
-from .models import Taken, Course, Student, Friend
+from .models import Taken, Course, Student, Friend, Faculty
 from . import db
+from sqlalchemy import func
 
 views = Blueprint('views', __name__)
 
@@ -172,7 +173,21 @@ def classresult():
         # initialize query to select all courses
         # purposes: (1) when the form is returned empty, (2) as the base to narrow down based on what was entered in the form
         # SQL: "SELECT * FROM Course;"
-        query = Course.query
+        query = (db.session.query(
+                    Course.id,
+                    Course.subject,
+                    Course.courseno,
+                    Course.title,
+                    Course.credits,
+                    Course.instrumeth,
+                    Course.day,
+                    Course.time,
+                    Course.location,
+                    Course.instructor,
+                    Faculty.fname,
+                    Faculty.lname)
+                .join(Faculty, Faculty.id == Course.instructor)
+                )
 
         # filter down the query based on what attributes were given
         if subject:
@@ -184,18 +199,20 @@ def classresult():
             query = query.filter(Course.courseno == courseno)
         if title:
             #SQL: "SELECT * FROM Course WHERE title = {title}"
-            title = title.title()
-            query = query.filter(Course.title == title)
+            title = title.lower()
+            query = query.filter(func.lower(Course.title) == title)
+
         if day:
             #SQL: "SELECT * FROM Course WHERE day = UPPER({day})"
             day = day.upper()
             query = query.filter(Course.day == day)
-
         # execute the filtered query into a list
         courses = query.all()
 
+        isadmin = current_user.isadmin
+
         # open template based on what has been left 
-        return render_template('classes.html', courses = courses)
+        return render_template('classes.html', courses = courses, isadmin=isadmin)
     
     if request.method == 'POST':
         # get checked classes from form selected_class

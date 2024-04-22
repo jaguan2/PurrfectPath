@@ -37,7 +37,7 @@
 
     </style>
 
-    <form action="{{ url_for('views.classresults') }}" method="POST">
+    <form action="{{ url_for('views.classsubmit') }}" method="POST">
         <div class = "search">
             <h2> Sections Found: </h2>
             <table>
@@ -59,7 +59,7 @@
                 </tr>
                 {% for course in courses %}
                 <tr>
-                    <td><input type="checkbox" name="selected_class" class="check_button"></td>
+                    <td><input type="checkbox" name="selected_class" class="check_button" value="{{ course.id }}"></td>
                     <td>{{ course.id }}</td>
                     <td>{{ course.subject }}</td>
                     <td>{{ course.courseno }}</td>

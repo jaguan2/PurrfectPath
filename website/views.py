@@ -1,4 +1,4 @@
-from flask import render_template, Blueprint, request
+from flask import render_template, Blueprint, request, redirect, url_for
 from flask_login import login_required, current_user
 from .models import Taken, Course, Student
 from . import db
@@ -55,3 +55,24 @@ def classresults():
 def friend():
     users = Student.query.all()
     return render_template('friend.html', users = users)
+
+@views.route('/classsubmit',  methods=['GET', 'POST'])
+def classsubmit():
+
+    if request.method == 'POST':
+        # Get the list of selected class IDs from the form data
+        selected_class_ids = request.form.getlist('selected_class')
+        print(selected_class_ids)
+        
+        # Iterate through the selected class IDs and create entries in the 'taken' table
+        for class_id in selected_class_ids:
+            print(class_id)
+            taken_entry = Taken(student=current_user.id, course=class_id)
+            db.session.add(taken_entry)
+        
+        # Commit the changes to the database
+        db.session.commit()
+        
+        return redirect(url_for('views.myuser'))
+
+    return redirect(url_for('views.myuser'))

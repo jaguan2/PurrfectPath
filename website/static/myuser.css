@@ -143,12 +143,12 @@ nav a:visited {
     color: #E75480;
     font-size: 15px;
     font-family: "Meow";
-  }
-  
+}
+
 .button-link:hover {
     background-color: #e6a4b4;
     color: #fff; 
-  }
+}
 
 .friends {
     max-width: 800px;

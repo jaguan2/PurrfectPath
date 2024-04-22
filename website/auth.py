@@ -38,7 +38,6 @@ def logout():
   logout_user()
   return redirect(url_for('auth.login'))
 
-
 @auth.route('/register', methods=['GET', 'POST'])
 def register():
   if request.method == 'POST':
@@ -77,8 +76,10 @@ def ret():
 def home():
   return redirect(url_for('views.myuser'))
 
-@auth.route('/search')
+@auth.route('/search', methods=['GET', 'POST'])
 def search():
+  if request.method == 'POST':
+    return render_template("classes.html")
   return render_template("schedule.html")
 
 @auth.route('/friend')

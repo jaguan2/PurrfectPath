@@ -23,22 +23,25 @@ def myuser():
 @views.route('/classresults', methods=['GET', 'POST'])
 @login_required
 def classresults():
-    subject = request.args.get('subject')
+    subject = request.args.get('subject')#.upper()
     courseno = request.args.get('courseno')
-    title = request.args.get('title')
-    day = request.args.get('day')
+    title = request.args.get('title')#.title()
+    day = request.args.get('day')#.upper()
 
     # Initialize the base query to select all courses
     query = Course.query
 
     # Filter the query based on the provided search parameters
     if subject:
+        subject = subject.upper()
         query = query.filter(Course.subject == subject)
     if courseno:
         query = query.filter(Course.courseno == courseno)
     if title:
+        title = title.title()
         query = query.filter(Course.title == title)
     if day:
+        day = day.upper()
         query = query.filter(Course.day == day)
 
     # Execute the filtered query

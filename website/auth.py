@@ -80,7 +80,7 @@ def search():
     title = request.form.get('title')
     day = request.form.get('day')
 
-    return redirect(url_for('views.classresults', subject=subject, courseno=courseno, title=title, day=day))
+    return redirect(url_for('views.classresult', subject=subject, courseno=courseno, title=title, day=day))
   return render_template("schedule.html")
 
 @auth.route('/friend')

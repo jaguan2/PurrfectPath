@@ -111,6 +111,45 @@ nav a:visited {
     margin-top: 20px;
 }
 
+.adddropclass {
+    display: flex;
+}
+
+.adddropclassbutton{
+    padding: 10px;
+}
+
+.adddropfriend {
+    display: flex;
+}
+
+.adddropfriendbutton {
+    padding: 10px;
+}
+
+.button-link {
+    width: 100%;
+    height: 100px;
+    padding: 5px;
+    margin: 10px;
+    
+    background: pink;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,-1);
+    cursor: pointer;
+
+    color: #E75480;
+    font-size: 15px;
+    font-family: "Meow";
+  }
+  
+.button-link:hover {
+    background-color: #e6a4b4;
+    color: #fff; 
+  }
+
 .friends {
     max-width: 800px;
     margin: 20px auto;

@@ -11,24 +11,25 @@
     <link rel="stylesheet" href="/static/myuser.css">
 </head>
 
-<body>
-    <header>
-        <div class = "title">
-            <div class="logo">
-                <img src="https://media.discordapp.net/attachments/1194441517826322503/1230266606534397972/file-AADxbJARYTVlu6z98DEhdTly-removebg-preview.png?ex=6632b210&is=66203d10&hm=6c08f2b2a2dba931ba81d823c0ec6a181e9c0d2dfd10985526abdeb8ed92a895&=&format=webp&quality=lossless&width=1000&height=1000" alt="Logo">
-            </div>
-            <h1>My Profile</h1>
+<header>
+    <div class = "title">
+        <div class="logo">
+            <img src="https://media.discordapp.net/attachments/1194441517826322503/1230266606534397972/file-AADxbJARYTVlu6z98DEhdTly-removebg-preview.png?ex=6632b210&is=66203d10&hm=6c08f2b2a2dba931ba81d823c0ec6a181e9c0d2dfd10985526abdeb8ed92a895&=&format=webp&quality=lossless&width=1000&height=1000" alt="Logo">
         </div>
-        
-        <nav>
-            <ul>
-                <li><a href="myuser">Home</a></li>
-                <li><a href="/search">Schedule Search</a></li>
-                <li><a href="/friend">Friends</a></li>
-                <li><a href="/logout">Logout</a></li>
-            </ul>
-        </nav>
-    </header>
+        <h1>My Profile</h1>
+    </div>
+    
+    <nav>
+        <ul>
+            <li><a href="myuser">Home</a></li>
+            <li><a href="/search">Schedule Search</a></li>
+            <li><a href="/friend">Friends</a></li>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+    </nav>
+</header>
+
+<body>
 
     <div class="me">
         <section class= "user-info">
@@ -42,20 +43,81 @@
         <section class="classes">
             <h2>Schedule</h2>
             <ul>
-                {% for course in taken %}
-                    <li>{{ course.title }}</li>
-                {% endfor %}
+                {% if taken %}
+                    {% for course in taken %}
+                        <li>{{ course.title }}</li>
+                    {% endfor %}
+                {% else %}
+                    <li>No classes scheduled, schedule now!</li>
+                {% endif %}
             </ul>
+
+            {% if taken %}
+                <div class = "adddropclass">
+                    <div class="adddropclassbutton"><a href="/search" class="button-link"> Add a class? </a></div>
+                    <div class="adddropclassbutton"><a href="{{ url_for('views.dropclass') }}" class="button-link"> Remove a class? </a></div>
+                </div>
+            {% else %}
+                <div class = "adddropclass">
+                    <div class="adddropclassbutton"><a href="/search" class="button-link"> Add a class? </a></div>
+                </div>
+            {% endif %}
         </section>
     </div>
 
     <div class = "friends">
         <h2> My Friends </h2>
         <ul>
-            {% for friend in friends %}
-            <li>{{ friend.username }} <a href="{{ url_for('views.friendschedule', friendid=friend.id) }}" class = "checkschedule">(Check Their Schedule!)</a> </li>
-            {% endfor %}
+            <!-- for every friend, print their user name-->
+            {% if friends %}
+                {% for friend in friends %}
+                    <li>{{ friend.username }} <a href="{{ url_for('views.friendschedule', friendid=friend.id) }}" class = "checkschedule">(Check Their Schedule!)</a> </li>
+                {% endfor %}
+            <!-- if no friends, display message -->
+            {% else %}
+                <li><a href="/friend">No friends added, add a friend now!</a></li>
+            {% endif %}
         </ul>
+
+        <!-- add friend and drop friend redirects-->
+        {% if friends %}
+            <div class = "adddropfriend">
+                <div class = "adddropfriendbutton"><a href="/friend" class="button-link">Add a friend?</a></div>
+                <div class = "adddropfriendbutton"><a href="{{ url_for('views.dropfriend') }}" class="button-link"> Remove a friend? </a></div>
+            </div>
+        <!-- if there are no friends, remove option to drop friends-->
+        {% else %}
+            <div class = "adddropfriend">
+                <div class = "adddropfriendbutton"><a href="/friend" class="button-link">Add a friend?</a></div>
+            </div>
+        {% endif %}
+        
+    </div>
+
+    <div class = "friends">
+        <h2> Sent Requests </h2>
+        <ul>
+            <!-- for every friend, print their user name-->
+            {% if requesting %}
+                {% for friend in requesting %}
+                    <li>{{ friend.username }}</li>
+                {% endfor %}
+            <!-- if no friends, display message -->
+            {% else %}
+                <li><a href="/friend">No friends waiting, add a friend now!</a></li>
+            {% endif %}
+        </ul>
+
+        {% if requested %}
+        <h2> Received Requests </h2>
+            <ul>
+                <!-- for every friend, print their user name-->
+                {% for friend in requested %}
+                    <li>{{ friend.username }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        
     </div>
 
 

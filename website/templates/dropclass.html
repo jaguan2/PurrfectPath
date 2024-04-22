@@ -1,0 +1,80 @@
+{% block content%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Drop Class</title>
+    <link rel="icon" type="image/png" href="https://media.discordapp.net/attachments/1194441517826322503/1230266606534397972/file-AADxbJARYTVlu6z98DEhdTly-removebg-preview.png?ex=6632b210&is=66203d10&hm=6c08f2b2a2dba931ba81d823c0ec6a181e9c0d2dfd10985526abdeb8ed92a895&=&format=webp&quality=lossless&width=1000&height=1000">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/classes.css" type="text/css">
+</head>
+
+<body>
+    <header>
+        <div class = "title">
+            <div class="logo">
+                <img src="https://media.discordapp.net/attachments/1194441517826322503/1230266606534397972/file-AADxbJARYTVlu6z98DEhdTly-removebg-preview.png?ex=6632b210&is=66203d10&hm=6c08f2b2a2dba931ba81d823c0ec6a181e9c0d2dfd10985526abdeb8ed92a895&=&format=webp&quality=lossless&width=1000&height=1000" alt="Logo">
+            </div>
+            <h1>Drop Class</h1>
+        </div>
+        
+        <nav>
+            <ul>
+                <li><a href="/home">Home</a></li>
+                <li><a href="/search">Schedule Search</a></li>
+                <li><a href="/friend">Friends</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <form action="{{ url_for('views.dropclass') }}" method="POST">
+        <div class = "search">
+            <h2> Drop a Class: </h2>
+            <table>
+                <tr>
+                    <td>≽^•⩊•^≼</td>
+                    <td>CRN </td>
+                    <td>Subject </td>
+                    <td>CourseNo </td>
+                    <td>Title </td>
+                    <td>Credits </td>
+                    <td>Instructional Method </td>
+                    <td>Day </td>
+                    <td>Time </td>
+                    <td>Location </td>
+                    <td>Instructor </td>
+                    {% if current_user.is_admin %}
+                    <th>Faculty ID</th> <!--This column will only be visible to admins-->
+                    {% endif %}
+                </tr>
+                {% for course in courses %}
+                <tr>
+                    <td><input type="checkbox" name="selected_class" class="check_button" value="{{ course.id }}"></td>
+                    <td>{{ course.id }}</td>
+                    <td>{{ course.subject }}</td>
+                    <td>{{ course.courseno }}</td>
+                    <td>{{ course.title }}</td>
+                    <td>{{ course.credits }}</td>
+                    <td>{{ course.instrumeth }}</td>
+                    <td>{{ course.day }}</td>
+                    <td>{{ course.time }}</td>
+                    <td>{{ course.location }}</td>
+                    <td>{{ course.instructor }}</td>
+                    {% if current_user.is_admin %}
+                    <!-- <th>Faculty ID</th> This cell will only be visible to admins-->
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            <tr>
+                <td colspan="11" class="table_button">
+                    <button class = "button" type="submit" style="float: right;">Submit</button>
+                </td>
+            </tr>
+            </table>
+        </div>
+    </form>
+</body>
+</html>
+{% endblock %}

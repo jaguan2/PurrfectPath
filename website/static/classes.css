@@ -75,38 +75,6 @@ nav a:visited {
     color:#E75480;
 }
 
-.me {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #FFE5E5;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.user-info {
-    display: flex;
-    flex-direction: row;
-    align-items: center; /* Align items vertically */
-}
-
-.avatar {
-    margin-right: 10px; /* Add space between avatar and details */
-}
-
-.avatar img {
-    width: 100%; /* Adjust width of the avatar */
-    max-width: 75px;
-    height: 75px; /* Adjust height of the avatar */
-    overflow: hidden;
-    border-radius: 50%;
-}
-
-.name {
-    flex: 3;
-    padding: 0 20px;
-}
-
 .classes {
     margin-top: 20px;
 }
@@ -118,6 +86,11 @@ nav a:visited {
     background-color: #FFE5E5;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+table, th, td {
+    border: 1px solid pink;
+    text-align: center;
 }
 
 .button {

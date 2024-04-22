@@ -1,4 +1,4 @@
-from flask import render_template, Blueprint, request, redirect, url_for
+from flask import render_template, Blueprint, request, redirect, url_for, flash
 from flask_login import login_required, current_user
 from .models import Taken, Course, Student, Friend
 from . import db
@@ -222,7 +222,7 @@ def friend():
         # get checked friends from form selected_friend
         selected_friends = request.form.getlist('selected_friend')
         
-       # for every friend checked, add the instance in the Friend table where the user is the follower and the friend is the followee
+        # for every friend checked, add the instance in the Friend table where the user is the follower and the friend is the followee
         for follow in selected_friends:
             #SQL: INSERT INTO Friend(follower, followee) VALUES ({myid}, {friendid})
             follow_entry = Friend(follower=current_user.id, followee=follow)
@@ -255,5 +255,25 @@ def friend():
         # save a list of all the users the current user is not following
         users = list(set(users) - set(current_friends))
 
+        #query for the users the current user is following
+        #SQL = "SELECT * FROM Student JOIN Friend ON Student.id = Friend.followeee WHERE follower = {myid}"
+        following = (
+            db.session.query(Student)
+                .join(Friend, Student.id == Friend.followee)
+                .filter(Friend.follower == myid)
+                .all()
+        )
+
+        #query for the users the current user is followed by
+        #SQL = "SELECT * FROM Student JOIN Friend On Student.id = Friend.follower WHERE Friend.followee = {myid}"
+        followee = (
+            db.session.query(Student)
+                .join(Friend, Student.id == Friend.follower)
+                .filter(Friend.followee == myid)
+                .all()
+        )
+
+        notFollowingBack = list(set(followee) - set(following))
+
         # open template based on users the current user is not following 
-        return render_template('friend.html', users = users)
+        return render_template('friend.html', users = users, requesting = notFollowingBack)

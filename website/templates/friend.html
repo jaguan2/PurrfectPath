@@ -38,8 +38,26 @@
                 {% endif %}
             {% endfor %}
             <div>
-                <button class = "button" type="submit">Submit</button>
+                <button class ="button" type="submit">Submit</button>
             </div>
+        </div>
+    </form>
+
+    <form method="POST">
+        <div class = "search">
+            <h2 class="lookup_title"> Pending Requests:</h2>
+            {% if requesting %}
+                {% for friend in requesting %}
+                    <div class="lookup">
+                        <input type="checkbox" name="selected_friend" value="{{ friend.id }}">{{ friend.username }}
+                    </div>
+                {% endfor %}
+                <div>
+                    <button class ="button" type="submit">Accept</button>
+                </div>
+            {% else %}
+                <p>No pending friend requests.</p>
+            {% endif %}
         </div>
     </form>
 

@@ -82,3 +82,7 @@ def search():
 
     return redirect(url_for('views.classresults', subject=subject, courseno=courseno, title=title, day=day))
   return render_template("schedule.html")
+
+@auth.route('/friend')
+def friend():
+  return redirect(url_for('views.friend'))

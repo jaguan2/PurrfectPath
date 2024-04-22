@@ -29,58 +29,66 @@
     </header>
 
     <style>
-
-    table, th, td {
-        border: 1px solid pink;
-        text-align: center;
-    }
-
+        table, th, td {
+            border: 1px solid pink;
+            text-align: center;
+        }
     </style>
 
-    <div class = "search">
-        <h2> Sections Found: </h2>
-        <table>
+    <form method="POST" id = "ClassSearch">
+        <label for="subject"> Subject  <input type="text" name="subject" placeholder="meow"></label><br>
+        <label for="courseno"> Course Number <input type="text" name="courseno" placeholder="meow"></label><br>
+        <label for="title"> Title <input type="text" name="title" placeholder="meow"></label><br>
+        <label for="day"> Day <input type="text" name="day" placeholder="meow"></label><br>
+        <button type="submit" class="button">Submit</button>
+    </form>    
+
+    <form method="POST"></form>
+        <div class = "search">
+            <h2> Sections Found: </h2>
+            <table>
+                <tr>
+                    <td>≽^•⩊•^≼</td>
+                    <td>CRN </td>
+                    <td>Subject </td>
+                    <td>CourseNo </td>
+                    <td>Title </td>
+                    <td>Credits </td>
+                    <td>Instructional Method </td>
+                    <td>Day </td>
+                    <td>Time </td>
+                    <td>Location </td>
+                    <td>Instructor </td>
+                    {% if current_user.is_admin %}
+                    <th>Faculty ID</th> <!--This column will only be visible to admins-->
+                    {% endif %}
+                </tr>
+                {% for course in courses %}
+                <tr>
+                    <td><input type="checkbox" name="selected_class" class="check_button"></td>
+                    <td>{{ course.id }}</td>
+                    <td>{{ course.subject }}</td>
+                    <td>{{ course.courseno }}</td>
+                    <td>{{ course.title }}</td>
+                    <td>{{ course.credits }}</td>
+                    <td>{{ course.instrumeth }}</td>
+                    <td>{{ course.day }}</td>
+                    <td>{{ course.time }}</td>
+                    <td>{{ course.location }}</td>
+                    <td>{{ course.instructor }}</td>
+                    {% if current_user.is_admin %}
+                    <!-- <th>Faculty ID</th> This cell will only be visible to admins-->
+                    {% endif %}
+                </tr>
+                {% endfor %}
             <tr>
-                <td>≽^•⩊•^≼</td>
-                <td>CRN </td>
-                <td>Subject </td>
-                <td>CourseNo </td>
-                <td>Title </td>
-                <td>Credits </td>
-                <td>Instructional Method </td>
-                <td>Day </td>
-                <td>Time </td>
-                <td>Location </td>
-                <td>Instructor </td>
-                {% if current_user.is_admin %}
-                <th>Faculty ID</th> <!--This column will only be visible to admins-->
-                {% endif %}
+                <td colspan="11" class="table_button">
+                    <button class = "button" type="button" style="float: right;" method = "POST">Submit</button>
+                </td>
             </tr>
-            {% for course in courses %}
-            <tr>
-                <td><input type="checkbox" name="selected_class" class="check_button"></td>
-                <td>{{ course.id }}</td>
-                <td>{{ course.subject }}</td>
-                <td>{{ course.courseno }}</td>
-                <td>{{ course.title }}</td>
-                <td>{{ course.credits }}</td>
-                <td>{{ course.instrumeth }}</td>
-                <td>{{ course.day }}</td>
-                <td>{{ course.time }}</td>
-                <td>{{ course.location }}</td>
-                <td>{{ course.instructor }}</td>
-                {% if current_user.is_admin %}
-                <!-- <th>Faculty ID</th> This cell will only be visible to admins-->
-                {% endif %}
-            </tr>
-            {% endfor %}
-        <tr>
-            <td colspan="11" class="table_button">
-                <button class = "button" type="submit" style="float: right;">Submit</button>
-            </td>
-        </tr>
-        </table>
-    </div>
+            </table>
+        </div>
+    </form>
 
 </body>
 </html>

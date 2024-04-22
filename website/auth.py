@@ -86,3 +86,15 @@ def search():
 @auth.route('/friend')
 def friend():
   return redirect(url_for('views.friend'))
+
+
+@auth.route('/classresults', methods=['GET', 'POST'])
+def classresults():
+    # Extract query parameters from the URL
+    subject = request.args.get('subject')
+    courseno = request.args.get('courseno')
+    title = request.args.get('title')
+    day = request.args.get('day')
+
+    return redirect(url_for('views.classresultsubmit'))
+

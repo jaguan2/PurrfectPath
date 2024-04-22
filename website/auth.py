@@ -33,9 +33,9 @@ def login():
 def logout():
   logout_user()
   return redirect(url_for('auth.login'))
-
 @auth.route('/register', methods=['GET', 'POST'])
 def register():
+  '''
   if request.method == 'POST':
 
     username = request.form.get('username')
@@ -61,7 +61,7 @@ def register():
       db.session.commit()
 
       return redirect(url_for('views.myuser'))
-
+  '''
   return render_template("register.html")
 
 @auth.route('/ret')

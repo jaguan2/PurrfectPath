@@ -23,6 +23,7 @@ def myuser():
             .filter(Taken.student == myid)
             .all()
     )
+
     #query for the users the current user is following
     #SQL = "SELECT * FROM Student JOIN Friend ON Student.id = Friend.followeee WHERE follower = {myid}"
     following = (
@@ -214,13 +215,36 @@ def classresult():
             #SQL: "SELECT * FROM Course WHERE title = {title}"
             title = title.lower()
             query = query.filter(func.lower(Course.title) == title)
-
         if day:
             #SQL: "SELECT * FROM Course WHERE day = UPPER({day})"
             day = day.upper()
             query = query.filter(Course.day == day)
+
         # execute the filtered query into a list
         courses = query.all()
+
+        # classes currently taking
+        taken = ((db.session.query(
+                    Course.id,
+                    Course.subject,
+                    Course.courseno,
+                    Course.title,
+                    Course.credits,
+                    Course.instrumeth,
+                    Course.day,
+                    Course.time,
+                    Course.location,
+                    Course.instructor,
+                    Faculty.fname,
+                    Faculty.lname)
+                .join(Faculty, Faculty.id == Course.instructor)
+                .join(Taken, Taken.course == Course.id)
+                .filter(Taken.student == current_user.id)
+                .all()
+            ))
+        
+        # all courses excluding the ones currently registered for
+        courses = list(set(courses) - set(taken))
 
         isadmin = current_user.isadmin
 

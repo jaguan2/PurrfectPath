@@ -86,7 +86,20 @@ def dropclass():
         #query for the classes registered by the current user based on the Course table and the Taken table
         #SQL = "SELECT * FROM Course JOIN Taken ON Course.id = Taken.course WHERE student = {my id}"
         taken = (
-            db.session.query(Course)
+            db.session.query(
+                    Course.id,
+                    Course.subject,
+                    Course.courseno,
+                    Course.title,
+                    Course.credits,
+                    Course.instrumeth,
+                    Course.day,
+                    Course.time,
+                    Course.location,
+                    Course.instructor,
+                    Faculty.fname,
+                    Faculty.lname)
+                .join(Faculty, Course.instructor == Faculty.id)
                 .join(Taken, Taken.course == Course.id)
                 .filter(Taken.student == myid)
                 .all()
@@ -172,7 +185,7 @@ def classresult():
 
         # initialize query to select all courses
         # purposes: (1) when the form is returned empty, (2) as the base to narrow down based on what was entered in the form
-        # SQL: "SELECT * FROM Course;"
+        # SQL: "SELECT id, subject, courseno, title, credits, instrumeth, day, time, location, instructor, fname, lname FROM Course C join Faculty F ON C.instructor = F.id;"
         query = (db.session.query(
                     Course.id,
                     Course.subject,

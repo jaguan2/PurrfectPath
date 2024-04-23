@@ -61,7 +61,7 @@
                     <td>{{ course.day }}</td>
                     <td>{{ course.time }}</td>
                     <td>{{ course.location }}</td>
-                    <td>{{ course.instructor }}</td>
+                    <td>{{ course.fname }} <br> {{ course.lname }}</td>
                     {% if current_user.is_admin %}
                     <!-- <th>Faculty ID</th> This cell will only be visible to admins-->
                     {% endif %}

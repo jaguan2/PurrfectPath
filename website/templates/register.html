@@ -73,10 +73,11 @@
                 alert("Password must contain at least one number.");
                 return false;
             }
-            if (password !== confpass)
+            if (password !== confpass) {
                 console.log("Passwords do not match.");
                 alert("Passwords do not match.");
-                return false;             
+                return false;    
+            }         
             return true; // All validations passed
         }
 

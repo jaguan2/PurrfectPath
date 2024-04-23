@@ -116,9 +116,15 @@ form li input[type="text"] {
 }
 
 button {
-    margin-top: 7px;
-    padding: 5px 10px;
+    margin-top: 9px;
+    padding: 8px 12px;
     border-radius: 50px;
     background-color: pink;
-    /* border:#E75480 */
+    color: #E75480;
+    border:#E75480;
+}
+
+.button:hover {
+    background-color: #e6a4b4;
+    color: #fff; 
 }

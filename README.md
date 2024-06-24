@@ -1,0 +1,2 @@
+“PurrfectPath” is a web application that is designed as a cat themed class scheduling platform for courses offered so that students may plan their courses and compare their courses with their friends. 
+In this project, Python Flask is used for backend development, Python SQLAlchemy is used for database management, and HTML, CSS, and JavaScript is used for front-end visualizations and application logic.  
